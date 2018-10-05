@@ -1,0 +1,31 @@
+<mat-card class="login-card">
+  <mat-card-header fxLayoutAlign="center center">
+    <!-- <div mat-card-avatar class="login-header-image"></div> -->
+    <mat-card-title>
+        <h2>Sign in</h2>
+    </mat-card-title>
+    <mat-card-subtitle>to continue to Dashboard</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="login-form">
+      <mat-form-field class="login-form-fields" color="accent">
+        <input matInput placeholder="Email" [formControl]="emailFormControl" autofocus>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="login-form-fields" color="accent" >
+        <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl">
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button color="accent" [disabled]="emailFormControl.hasError('required') || emailFormControl.hasError('required')|| passwordFormControl.hasError('required')" routerLink="/products">Signin</button>
+  </mat-card-actions>
+</mat-card>
